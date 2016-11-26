@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import GitHubMark from './GitHubMark.png'
+import Developer from './Developer.png'
 
 function Square(props) {
   return (
@@ -15,7 +16,9 @@ class Board extends React.Component {
     super();
     this.state = {
       squares: Array(9).fill(null),
-      xIsNext: true,
+      devIsNext: true,
+      githubmark: <img src={GitHubMark} alt='GitHubMark' />,
+      developer: <img src={Developer} alt='Developer' />,
     };
   }
   handleClick(i) {
@@ -23,10 +26,10 @@ class Board extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    squares[i] = this.state.devIsNext ? this.state.developer : this.state.githubmark;
     this.setState({
       squares: squares,
-      xIsNext: !this.state.xIsNext,
+      devIsNext: !this.state.devIsNext,
     });
   }
   renderSquare(i) {
@@ -36,13 +39,12 @@ class Board extends React.Component {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = 'Winner ' + winner;
+      status = `${winner} won`;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        status = this.state.devIsNext ? this.state.developer : this.state.githubmark;
     }
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
@@ -58,6 +60,7 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+        <div className="status">{status}</div>
       </div>
     );
   }
@@ -67,6 +70,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game">
+        <h1 className="headline">Git Tac Toe</h1>
         <div className="game-board">
           <Board />
         </div>
