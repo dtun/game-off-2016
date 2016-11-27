@@ -12,39 +12,10 @@ function Square(props) {
 }
 
 class Board extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      squares: Array(9).fill(null),
-      devIsNext: true,
-      githubmark: <img src={GitHubMark} alt='GitHubMark' />,
-      developer: <img src={Developer} alt='Developer' />,
-    };
-  }
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-    squares[i] = this.state.devIsNext ? this.state.developer : this.state.githubmark;
-    this.setState({
-      squares: squares,
-      devIsNext: !this.state.devIsNext,
-    });
-  }
   renderSquare(i) {
-    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />;
+    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
   }
   render() {
-    const winner = calculateWinner(this.state.squares);
-    let status;
-    if (winner) {
-      status = (<div>{winner} is the winner!</div>);
-    } else if ( this.state.squares.every(elem => elem != null) ) {
-        status = (<div>Cat's game!</div>);
-    } else {
-        status = this.state.devIsNext ? this.state.developer : this.state.githubmark;
-    }
     return (
       <div>
         <div className="board-row">
@@ -69,15 +40,57 @@ class Board extends React.Component {
 }
 
 class Game extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      history: [{
+        squares: Array(9).fill(null)
+      }],
+      devIsNext: true,
+      githubmark: <img src={GitHubMark} alt='GitHubMark' />,
+      developer: <img src={Developer} alt='Developer' />,
+    };
+  }
+  handleClick(i) {
+    const history = this.state.history;
+    const current = history[history.length - 1]
+    const squares = current.squares.slice();
+
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    squares[i] = this.state.devIsNext ? this.state.developer : this.state.githubmark;
+    this.setState({
+      history: history.concat([{
+        squares: squares
+      }]),
+      devIsNext: !this.state.devIsNext,
+    });
+  }
   render() {
+    const history = this.state.history;
+    const current = history[history.length - 1];
+    const winner = calculateWinner(current.squares);
+
+    let status;
+    if (winner) {
+      status = (<div>{winner} is the winner!</div>);
+    } else if ( current.squares.every(elem => elem != null) ) {
+        status = (<div>Cat's game!</div>);
+    } else {
+        status = this.state.devIsNext ? this.state.developer : this.state.githubmark;
+    }
     return (
       <div className="game">
         <h1 className="headline">Git Tac Toe</h1>
         <div className="game-board">
-          <Board />
+          <Board
+            squares={current.squares}
+            onClick={(i) => this.handleClick(i)}
+          />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
+          <div>{status}</div>
           <ol>{/* TODO */}</ol>
         </div>
         <a onClick={() => location.reload()}>Restart</a>
