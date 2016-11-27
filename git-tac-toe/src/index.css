@@ -20,9 +20,9 @@ ol, ul {
 }
 
 .status {
-  margin-top: 1em;
   display: flex;
   justify-content: center;
+  min-height: 1em;
 }
 
 .square {
@@ -60,5 +60,9 @@ ol, ul {
 }
 
 .game-info {
+  margin: 2.5%;
+}
 
+ol {
+  display: none;
 }
