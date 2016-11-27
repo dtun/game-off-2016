@@ -40,7 +40,7 @@ ol, ul {
   width: 5em;
 }
 
-.square:hover{
+.square:hover, a{
   cursor: pointer;
 }
 
