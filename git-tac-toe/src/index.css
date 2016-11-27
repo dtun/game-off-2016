@@ -1,68 +1,82 @@
-html {
-  display: flex;
-  justify-content: center;
+@media only screen and (min-width : 319px) {
+  html {
+    display: flex;
+    justify-content: center;
+  }
+
+  body {
+    font: 14px "Century Gothic", Futura, sans-serif;
+
+  }
+
+  ol, ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .board-row:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+
+  .status {
+    display: flex;
+    justify-content: center;
+    min-height: 1em;
+  }
+
+  .square {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 4em;
+    height: 4em;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: .5em;
+    text-align: center;
+    width: 4em;
+  }
+
+  .square:hover, a{
+    cursor: pointer;
+  }
+
+  .square:focus {
+    outline: none;
+  }
+
+  .kbd-navigation .square:focus {
+    background: #ddd;
+  }
+
+  .game {
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .game-info {
+    margin: 2.5%;
+  }
+
+  ol {
+    display: none;
+  }
+
+  .winners {
+    background-color: green;
+  }
 }
 
-body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-
-}
-
-ol, ul {
-  display: flex;
-  flex-direction: column;
-}
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.status {
-  display: flex;
-  justify-content: center;
-  min-height: 1em;
-}
-
-.square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 1.5em;
-  font-weight: bold;
-  line-height: 5em;
-  height: 5em;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: .5em;
-  text-align: center;
-  width: 5em;
-}
-
-.square:hover, a{
-  cursor: pointer;
-}
-
-.square:focus {
-  outline: none;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
-.game {
-  margin-top: 20%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.game-info {
-  margin: 2.5%;
-}
-
-ol {
-  display: none;
+@media only screen and (min-width : 767px) {
+  .square {
+    line-height: 6em;
+    height: 6em;
+    width: 6em;
+  }
 }
