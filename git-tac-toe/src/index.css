@@ -5,7 +5,7 @@ html {
 
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 5%;
+
 }
 
 ol, ul {
@@ -35,7 +35,7 @@ ol, ul {
   height: 5em;
   margin-right: -1px;
   margin-top: -1px;
-  padding: 0;
+  padding: .5em;
   text-align: center;
   width: 5em;
 }
@@ -53,7 +53,7 @@ ol, ul {
 }
 
 .game {
-  margin-top: 15%;
+  margin-top: 20%;
   display: flex;
   flex-direction: column;
   text-align: center;
