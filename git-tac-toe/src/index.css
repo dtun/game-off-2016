@@ -14,11 +14,7 @@
     flex-direction: column;
   }
 
-  .board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
+
 
   .status {
     display: flex;
@@ -39,6 +35,22 @@
     padding: .5em;
     text-align: center;
     width: 4em;
+  }
+
+  .winningSquare {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 4em;
+    height: 4em;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: .5em;
+    text-align: center;
+    width: 4em;
+    box-shadow: 0 0 0 2px darkseagreen inset;
   }
 
   .square:hover, a{
@@ -75,6 +87,12 @@
 
 @media only screen and (min-width : 767px) {
   .square {
+    line-height: 6em;
+    height: 6em;
+    width: 6em;
+  }
+
+  .winningSquare {
     line-height: 6em;
     height: 6em;
     width: 6em;
