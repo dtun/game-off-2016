@@ -14,10 +14,16 @@
     flex-direction: column;
   }
 
-  .status {
+  .game {
+    margin-top: 20%;
     display: flex;
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
-    min-height: 1em;
+  }
+
+  .status {
+    min-height: 1.5em;
   }
 
   .square {
@@ -35,10 +41,6 @@
     width: 4em;
   }
 
-  .winningSquare:focus {
-    outline: none;
-  }
-
   .winningSquare {
     background: #fff;
     border: 1px solid #999;
@@ -54,6 +56,14 @@
     width: 4em;
     box-shadow: 0 0 0 2px darkseagreen inset;
   }
+  .game-board {
+    display: flex;
+    justify-content: center;
+  }
+
+  .winningSquare:focus {
+    outline: none;
+  }
 
   .square:hover, a{
     cursor: pointer;
@@ -65,13 +75,6 @@
 
   .kbd-navigation .square:focus {
     background: #ddd;
-  }
-
-  .game {
-    margin-top: 20%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
   }
 
   .game-info {
