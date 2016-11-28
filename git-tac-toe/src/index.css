@@ -82,12 +82,30 @@
     margin: 2.5%;
   }
 
-  ol {
+  .thankyou {
+    margin-top: 10%;
+    font-size: .5em;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a:visted {
+    color: black !important;
+  }
+
+  label {
     display: none;
   }
 
-  .winners {
-    background-color: green;
+  ol {
+    display: none;
   }
 }
 
@@ -103,22 +121,4 @@
     height: 6em;
     width: 6em;
   }
-}
-
-.thankyou {
-  margin-top: 10%;
-  font-size: .5em;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:visted {
-  color: black !important;
 }

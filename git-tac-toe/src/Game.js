@@ -5,9 +5,9 @@ import Developer from './Developer.png'
 
 function Square(props) {
   return (
-    <button className={props.className} onClick={() => props.onClick()}>
-      {props.value}
-    </button>
+      <button className={props.className} onClick={() => props.onClick()}>
+        {props.value}
+      </button>
   );
 }
 
@@ -37,7 +37,14 @@ function calculateWinner(squares) {
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square className={this.props.winningKeys.includes(i) ? 'winningSquare' : 'square'} id={this.props.id} key={i} value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
+    return (
+      <Square
+        className={this.props.winningKeys.includes(i) ? 'winningSquare' : 'square'}
+        id={this.props.squares[i] ? this.props.squares[i] : 'empty-square'}
+        value={this.props.squares[i] ? this.props.squares[i] : this.props.emptySquare}
+        onClick={() => this.props.onClick(i)}
+      />
+    );
   }
   render() {
     return (
@@ -73,6 +80,7 @@ class Game extends React.Component {
       stepNumber: 0,
       githubmark: <img src={GitHubMark} alt='GitHubMark' />,
       developer: <img src={Developer} alt='Developer' />,
+      emptySquare: <label id='empty-square'>empty square</label>,
       winningKeys: [0],
     };
   }
@@ -132,6 +140,7 @@ class Game extends React.Component {
           <Board
             winningKeys={keysToCheck}
             squares={current.squares}
+            emptySquare={this.state.emptySquare}
             onClick={(i) => this.handleClick(i)}
           />
         </div>
@@ -141,7 +150,7 @@ class Game extends React.Component {
         </div>
         <a onClick={() => location.reload()}>Restart</a>
         <div className="thankyou">
-          <h2>thanks to <a href="https://github.com/blog/2274-game-off-theme-announcement">github's game off</a> & <a href="https://facebook.github.io/react/tutorial/tutorial.html">facebook's react tutorial</a></h2>
+          <h2>developed for <a href="https://github.com/blog/2274-game-off-theme-announcement">github's game off</a> with help from <a href="https://facebook.github.io/react/tutorial/tutorial.html">facebook's react tutorial</a></h2>
           <h2>i work at <a href="http://synapsestudios.com/">synapse studios</a></h2>
         </div>
       </div>
