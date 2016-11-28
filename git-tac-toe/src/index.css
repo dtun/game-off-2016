@@ -56,6 +56,7 @@
     width: 4em;
     box-shadow: 0 0 0 2px darkseagreen inset;
   }
+  
   .game-board {
     display: flex;
     justify-content: center;
