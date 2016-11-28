@@ -140,6 +140,10 @@ class Game extends React.Component {
           <ol>{moves}</ol>
         </div>
         <a onClick={() => location.reload()}>Restart</a>
+        <div className="thankyou">
+          <h2>thanks to <a href="https://github.com/blog/2274-game-off-theme-announcement">github's game off</a> & <a href="https://facebook.github.io/react/tutorial/tutorial.html">facebook's react tutorial</a></h2>
+          <h2>i work at <a href="http://synapsestudios.com/">synapse studios</a></h2>
+        </div>
       </div>
     );
   }
