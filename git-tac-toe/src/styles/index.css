@@ -5,8 +5,7 @@
   }
 
   body {
-    font: 14px "Century Gothic", Futura, sans-serif;
-
+    font: 14px "Helvetica Neue", "Century Gothic", Futura, sans-serif;
   }
 
   ol, ul {
@@ -85,6 +84,7 @@
   .thankyou {
     margin-top: 10%;
     font-size: .5em;
+    font-weight: 100;
   }
 
   a {

@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
-import GitHubMark from './GitHubMark.png'
-import Developer from './Developer.png'
+import './styles/App.css';
+import GitHubMark from './resources/GitHubMark.png'
+import Developer from './resources/Developer.png'
 
 function Square(props) {
   return (
@@ -150,8 +150,11 @@ class Game extends React.Component {
         </div>
         <a onClick={() => location.reload()}>Restart</a>
         <div className="thankyou">
-          <h2>developed for <a href="https://github.com/blog/2274-game-off-theme-announcement">github's game off</a> with help from <a href="https://facebook.github.io/react/tutorial/tutorial.html">facebook's react tutorial</a></h2>
-          <h2>i work at <a href="http://synapsestudios.com/">synapse studios</a></h2>
+          <h2>
+            for <a href="https://github.com/blog/2274-game-off-theme-announcement">github's game off 2016</a> |
+            help from <a href="https://facebook.github.io/react/tutorial/tutorial.html">facebook's react tutorial</a> |
+            i work at <a href="http://synapsestudios.com/">synapse studios</a>
+          </h2>
         </div>
       </div>
     );
