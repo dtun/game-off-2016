@@ -40,7 +40,7 @@ class Board extends React.Component {
     return (
       <Square
         className={this.props.winningKeys.includes(i) ? 'winningSquare' : 'square'}
-        id={this.props.squares[i] ? this.props.squares[i] : 'empty-square'}
+        
         value={this.props.squares[i] ? this.props.squares[i] : this.props.emptySquare}
         onClick={() => this.props.onClick(i)}
       />
@@ -148,7 +148,9 @@ class Game extends React.Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
-        <a onClick={() => location.reload()}>Restart</a>
+        <div>
+          <a onClick={() => location.reload()}>Restart</a>
+        </div>
         <div className="thankyou">
           <h2>
             for <a href="https://github.com/blog/2274-game-off-theme-announcement">github's game off 2016</a> |
