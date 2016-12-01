@@ -1,18 +1,16 @@
 # GitHub Game Off 2016
 
-![Git Tac Toe](https://cloud.githubusercontent.com/assets/121322/19498019/d8827370-9543-11e6-82d8-6da822b6147b.png)
+![Git Tac Toe](GitTacToe.gif)
 
 ## The idea
 
 Enjoy the classic game of Tic Tac Toe with a subtle GitHub twist. Bring a friend. It was made for two.
 
 ## How to play
-Easy. Visit this link now, or bookmark it for later: [https://ns-hvknoguqvc.now.sh](https://ns-hvknoguqvc.now.sh)
+Easy. Visit this link now, or bookmark it for later: [https://ns-mlryykpypx.now.sh](https://ns-mlryykpypx.now.sh)
 
-If you're wondering why the link is weird… As a simple and free way to deploy the app, I used the [now](https://zeit.co/now/) service.
+If you're wondering why the link is quite odd… as a simple and free way to deploy the app, I used the [now](https://zeit.co/now/) service.
 
-Which is a good lead to the rest of this story...
-- create-react-app
-- facebook's react tutorial
+The app was built using [create-react-app](https://github.com/facebookincubator/create-react-app), along with following [Facebook's own React tutorial](https://facebook.github.io/react/tutorial/tutorial.html). A handful of enhancements were made, including accessibility features and styles.
 
-...to be continued....
+I work at [Synapse Studios](https://synapsestudios.com).
