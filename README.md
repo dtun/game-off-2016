@@ -1,6 +1,6 @@
-# GitHub Game Off 2016
+# Git Tac Toe
 
-![Git Tac Toe](GitTacToe.gif)
+![Git Tac Toe](GitTacToe.png)
 
 ## The idea
 
