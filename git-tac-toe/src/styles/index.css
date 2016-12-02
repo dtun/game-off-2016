@@ -80,6 +80,10 @@
     margin: 2.5%;
   }
 
+  .restart {
+    margin-top: 10%;
+  }
+
   .thankyou {
     margin-top: 5%;
     font-size: .5em;
@@ -101,7 +105,6 @@
   }
 
   label {
-    display: none;
   }
 
   ol {

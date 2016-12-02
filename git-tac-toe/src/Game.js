@@ -1,11 +1,10 @@
 import React from 'react';
-import './styles/App.css';
 import GitHubMark from './resources/GitHubMark.png'
 import Developer from './resources/Developer.png'
 
 function Square(props) {
   return (
-      <button className={props.className} onClick={() => props.onClick()}>
+      <button id={props.value ? 'null' : 'Square'} className={props.className} onClick={() => props.onClick()}>
         {props.value}
       </button>
   );
@@ -13,13 +12,7 @@ function Square(props) {
 
 function Player(props) {
   return (
-      <img src={props.src} alt={props.alt} />
-  );
-}
-
-function NoPlayer(props) {
-  return (
-    <label>empty square</label>
+    <img src={props.src} alt={props.alt} />
   );
 }
 
@@ -40,7 +33,7 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[b] && squares[c]) {
-      if (squares[a].props.alt === squares[b].props.alt && squares[a].props.alt === squares[c].props.alt) {
+      if (squares[a].props.src === squares[b].props.src && squares[a].props.src === squares[c].props.src) {
         const winners = [squares[a], squares[b], squares[c], lines[i]];
         return winners;
       }
@@ -54,9 +47,9 @@ class Board extends React.Component {
     return (
       <Square
         className={this.props.winningKeys.includes(i) ? 'winningSquare' : 'square'}
-        value={this.props.squares[i] ? this.props.squares[i] : <NoPlayer />}
+        value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
-        id={this.props.id}
+        id={this.props.id ? this.props.id : 'Square'}
         key={i}
       />
     );
@@ -104,7 +97,7 @@ class Game extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.devIsNext ? <Player src={Developer} alt='Developer' /> : <Player src={GitHubMark} alt='GitHubMark' />;
+    squares[i] = this.state.devIsNext ? <Player src={Developer} alt={'Developer-'+(i+1)} /> : <Player src={GitHubMark} alt={'GitHubMark-'+(i+1)} />;
     this.setState({
       history: history.concat([{
         squares: squares
@@ -130,11 +123,32 @@ class Game extends React.Component {
 
     if (winner) {
       keysToCheck = this.state.winningKeys[3];
-      status = (<div>Winner!</div>);
+      status = (
+        <div>
+          <div>Winner!</div>
+          <div className="restart">
+            <a onClick={() => location.reload()}>Restart</a>
+          </div>
+        </div>
+      );
     } else if ( current.squares.every(elem => elem != null) ) {
-        status = (<div>Cat's game!</div>);
+        status = (
+          <div>
+            <div>Cat's game!</div>
+            <div className="restart">
+              <a onClick={() => location.reload()}>Restart</a>
+            </div>
+          </div>
+        );
     } else {
-        status = this.state.devIsNext ? <Player src={Developer} alt='Developer' /> : <Player src={GitHubMark} alt='GitHubMark' />;
+        status = this.state.devIsNext ?
+          <div>
+            <Player src={Developer} alt='Developer' /> <div>select a <label htmlFor='Square'>square</label></div>
+          </div>
+          :
+          <div>
+            <Player src={GitHubMark} alt='GitHubMark' /> <div>select a <label htmlFor='Square'>square</label></div>
+          </div>
     }
     const moves = history.map((step, move) => {
       const desc = move ?
@@ -159,9 +173,6 @@ class Game extends React.Component {
         <div className="game-info">
           <div>{status}</div>
           <ol>{moves}</ol>
-        </div>
-        <div>
-          <a onClick={() => location.reload()}>Restart</a>
         </div>
         <div className="thankyou">
           <h2>
