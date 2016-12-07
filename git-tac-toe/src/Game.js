@@ -3,10 +3,17 @@ import GitHubMark from './resources/GitHubMark.png'
 import Developer from './resources/Developer.png'
 
 function Square(props) {
+  if (!props.value) {
+    return (
+      <div className={props.className} id={`Square-${props.i}`} onClick={() => props.onClick()}>
+        <label htmlFor={`Square-${props.i}`} className="element-invisible">{'Square-'+ props.i}</label>
+      </div>
+    )
+  }
   return (
-      <button id={props.value ? 'null' : 'Square'} className={props.className} onClick={() => props.onClick()}>
+      <div className={props.className}>
         {props.value}
-      </button>
+      </div>
   );
 }
 
@@ -50,7 +57,7 @@ class Board extends React.Component {
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
         id={this.props.id ? this.props.id : 'Square'}
-        key={i}
+        i={i+1}
       />
     );
   }
@@ -134,7 +141,7 @@ class Game extends React.Component {
     } else if ( current.squares.every(elem => elem != null) ) {
         status = (
           <div>
-            <div>Cat's game!</div>
+            <div>{`Cat's game!`}</div>
             <div className="restart">
               <a onClick={() => location.reload()}>Restart</a>
             </div>
@@ -143,11 +150,11 @@ class Game extends React.Component {
     } else {
         status = this.state.devIsNext ?
           <div>
-            <Player src={Developer} alt='Developer' /> <div>select a <label htmlFor='Square'>square</label></div>
+            <Player src={Developer} alt='Developer' /> <div>select an empty square</div>
           </div>
           :
           <div>
-            <Player src={GitHubMark} alt='GitHubMark' /> <div>select a <label htmlFor='Square'>square</label></div>
+            <Player src={GitHubMark} alt='GitHubMark' /> <div>select an empty square</div>
           </div>
     }
     const moves = history.map((step, move) => {

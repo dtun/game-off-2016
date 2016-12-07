@@ -1,8 +1,9 @@
 @media only screen and (min-width : 319px) {
   html {
     display: flex;
-    justify-content: center;
   }
+
+  html > * { margin:auto; }
 
   body {
     font: 14px "Helvetica Neue", "Century Gothic", Futura, sans-serif;
@@ -24,36 +25,29 @@
     min-height: 1.5em;
   }
 
-  .square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 4em;
-    height: 4em;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: .5em;
-    text-align: center;
-    width: 4em;
-  }
-
   .winningSquare {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 1.5em;
-    font-weight: bold;
-    line-height: 4em;
-    height: 4em;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: .5em;
-    text-align: center;
-    width: 4em;
     box-shadow: 0 0 0 2px darkseagreen inset;
   }
+
+  .square, .winningSquare {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 3em;
+    height: 3em;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: .5em;
+    text-align: center;
+    width: 3em;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .winningSquare > * { margin:auto; }
+  .square > * { margin:auto; }
 
   .game-board {
     display: flex;
@@ -81,7 +75,7 @@
   }
 
   .restart {
-    margin-top: 10%;
+    margin-top: 7.5%;
   }
 
   .thankyou {
@@ -104,24 +98,21 @@
     color: black !important;
   }
 
-  label {
-  }
-
   ol {
     display: none;
   }
 }
 
 @media only screen and (min-width : 767px) {
-  .square {
-    line-height: 6em;
-    height: 6em;
-    width: 6em;
+  .square, .winningSquare {
+    line-height: 5em;
+    height: 5em;
+    width: 5em;
   }
+}
 
-  .winningSquare {
-    line-height: 6em;
-    height: 6em;
-    width: 6em;
-  }
+.element-invisible {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
 }
